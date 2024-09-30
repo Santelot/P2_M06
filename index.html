@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Playbook-P2-M06</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            padding: 20px;
+        }
+        .header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+        .banner {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            cursor: pointer;
+            margin-bottom: 10px;
+        }
+        .banner .title {
+            font-size: 1.2em;
+            display: flex;
+            justify-content: space-between;
+        }
+        .banner .subtitle {
+            font-size: 1em;
+            margin-top: 5px;
+            border-top: 1px solid white;
+            padding-top: 5px;
+        }
+        .content {
+            display: none;
+            padding: 10px;
+            border: 1px solid #ddd;
+            margin-bottom: 10px;
+        }
+        .section {
+            margin-bottom: 15px;
+        }
+        .step-title {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+            text-align: left;
+        }
+        .section-title {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+            text-align: right;
+        }
+        .dialogue {
+            background-color: #f0f0f0;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 10px;
+            margin: 10px 0;
+            text-align: right;
+            font-style: italic;
+        }
+        .dropdown {
+            margin-bottom: 20px;
+        }
+        .dropdown select {
+            font-size: 1em;
+            padding: 5px;
+            margin-left: 10px;
+        }
+        .time-title {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+        .note {
+            background-color: #ffeb3b;
+            padding: 10px;
+            border: 1px solid #ddd;
+            margin-bottom: 10px;
+        }
+        .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+        }
+        .nav-buttons button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+        }
+        .nav-buttons button:disabled {
+            background-color: #ddd;
+            cursor: not-allowed;
+        }
+    </style>
+    <script>
+        function toggleContent(id) {
+            var content = document.getElementById(id);
+            if (content.style.display === "none") {
+                content.style.display = "block";
+            } else {
+                content.style.display = "none";
+            }
+        }
+
+        function updateActivities() {
+            var selectedTime = document.getElementById('time-select').value;
+            var activities = document.getElementsByClassName('activity');
+
+            document.getElementById('selected-time').innerText = "Tiempo efectivo de clase: " + selectedTime + " minutos";
+
+            for (var i = 0; i < activities.length; i++) {
+                activities[i].style.display = 'block';
+            }
+
+            if (selectedTime === '45') {
+                document.getElementById('activity-2').style.display = 'none';
+            } else if (selectedTime === '40') {
+                document.getElementById('activity-2').style.display = 'none';
+                document.getElementById('activity-4-step-5').style.display = 'none';
+            }
+        }
+
+        function navigateTo(id) {
+            var element = document.getElementById(id);
+            window.scrollTo({
+                top: element.offsetTop,
+                behavior: 'smooth'
+            });
+        }
+    </script>
+</head>
+<body onload="updateActivities()">
+
+<div class="header">
+    <h1>Playbook-P2-M06</h1>
+</div>
+
+<div class="container">
+    <div class="dropdown">
+        <label for="time-select">Tiempo efectivo de Clase:</label>
+        <select id="time-select" onchange="updateActivities()">
+            <option value="50">50 minutos</option>
+            <option value="45">45 minutos</option>
+            <option value="40">40 minutos</option>
+        </select>
+    </div>
+
+    <h2 id="selected-time" class="time-title">Tiempo efectivo de clase: 50 minutos</h2>
+</div>
+
+</body>
+</html>
+<!-- Actividad 0 (1 paso) -->
+<div id="activity-0" class="activity">
+    <div class="banner" onclick="toggleContent('revision-mision')">
+        <div class="title">
+            <span>📝 Actividad 0: Revisión de Misión (1 paso)</span>
+            <span>⏰ Tiempo: N/A</span>
+        </div>
+        <div class="subtitle">Proyectar la diapositiva 1: Revisar la disponibilidad de materiales</div>
+        <div class="summary">Revisar que estén disponibles las computadoras, acceso a Internet, Magic Tablets y plataformas como Code.org.</div>
+    </div>
+    <div id="revision-mision" class="content">
+        <div class="section">
+            <div class="step-title">Paso 1: Proyectar la diapositiva 1</div>
+            <div class="dialogue">No hay diálogo para los estudiantes, esta actividad es interna del profesor.</div>
+        </div>
+    </div>
+</div>
+<!-- Actividad 1 (4 pasos) -->
+<div id="activity-1" class="activity">
+    <div class="banner" onclick="toggleContent('saludo-ritual')">
+        <div class="title">
+            <span>📝 Actividad 1: Saludo y Ritual Gnius Club (4 pasos)</span>
+            <span>⏰ Tiempo: 4 minutos</span>
+        </div>
+        <div class="subtitle">Dar la bienvenida y presentar los objetivos</div>
+    </div>
+    <div id="saludo-ritual" class="content">
+        <!-- Paso 1 -->
+        <div class="section">
+            <div class="step-title">Paso 1 (0.5 minutos): Proyectar la diapositiva 2 "Saludo y Ritual Gnius Club"</div>
+            <div class="dialogue">"¡Hola Genios! ¿Listos para aprender algo increíble hoy? Hoy vamos a ver cómo la Inteligencia Artificial puede ayudar a salvar nuestros océanos."</div>
+        </div>
+        <!-- Paso 2 -->
+        <div class="section">
+            <div class="step-title">Paso 2 (1 minuto): Proyectar la diapositiva 3 "Estado de Ánimo"</div>
+            <div class="dialogue">"Si están emocionados por aprender algo nuevo, ¡levanten los brazos! Si necesitan un poco más de energía, crucen los brazos."</div>
+        </div>
+        <!-- Paso 3 -->
+        <div class="section">
+            <div class="step-title">Paso 3 (1 minuto): Proyectar la diapositiva 4 "Ritual de Agradecimiento Gnius Club"</div>
+            <div class="dialogue">"Ahora, vamos a juntar nuestras manos y dar las gracias por lo que vamos a aprender hoy. ¡Gracias por estar aquí, Genios! Hoy va a ser un gran día de aprendizaje y diversión."</div>
+        </div>
+        <!-- Paso 4 -->
+        <div class="section">
+            <div class="step-title">Paso 4 (1 minuto): Proyectar la diapositiva 5 "Objetivos de la Misión"</div>
+            <div class="dialogue">"Hoy tenemos tres grandes objetivos: 1) Aprender cómo funciona la Inteligencia Artificial. 2) Descubrir cómo la IA ayuda a proteger los océanos. 3) Crear una propuesta de IA para ayudar a los océanos."</div>
+        </div>
+    </div>
+</div>
+<!-- Actividad 2 (3 pasos) -->
+<div id="activity-2" class="activity">
+    <div class="banner" onclick="toggleContent('innovacion-dia')">
+        <div class="title">
+            <span>📝 Actividad 2: Innovación del Día (3 pasos)</span>
+            <span>⏰ Tiempo: 4 minutos</span>
+        </div>
+        <div class="subtitle">Descubrir el impacto de la Inteligencia Artificial</div>
+    </div>
+    <div id="innovacion-dia" class="content">
+        <!-- Paso 1 -->
+        <div class="section">
+            <div class="step-title">Paso 1 (2 minutos): Proyectar la diapositiva 6 "Innovación del Día"</div>
+            <div class="dialogue">"Genios, hoy vamos a ver una innovación increíble: cómo la Inteligencia Artificial está transformando nuestra sociedad, ayudando en áreas como la salud, el medio ambiente, y la seguridad."</div>
+        </div>
+        <!-- Paso 2 -->
+        <div class="section">
+            <div class="step-title">Paso 2 (1 minuto): Proyectar la diapositiva 7 y reproducir el video sobre el impacto de la IA</div>
+            <div class="dialogue">"""¿Alguna vez han escuchado hablar de la inteligencia artificial, o IA? ¡Es algo súper interesante! Las computadoras que usamos hoy en día son capaces de tomar decisiones, como cuando buscan cosas en Internet o nos muestran las últimas novedades. Incluso, ya pueden reconocer nuestras caras y voces.
+
+¡Imagínense! Pronto podrán manejar autos y hasta ayudar a los doctores a diagnosticar enfermedades mejor que los humanos. Todo esto es gracias a la inteligencia artificial.
+
+Aunque todavía estamos lejos de tener una inteligencia artificial ""real"", hoy en día tenemos algo que se llama Aprendizaje Automático. ¿Saben qué es eso? Es una manera en la que las computadoras aprenden por sí solas. No necesitamos decirles todo lo que tienen que hacer paso a paso, sino que ellas aprenden como nosotros: a base de práctica y de cometer errores.
+
+¡Y lo más emocionante es que aprenden de muchas cosas! Pueden reconocer imágenes, videos, sonidos y textos, y a partir de eso, encuentran patrones y hacen predicciones. Por ejemplo, pueden aprender a diferenciar entre una imagen de un auto y una bicicleta.
+
+La IA y el aprendizaje automático están cambiando el mundo. Por eso, es súper importante que aprendamos cómo funcionan. ¡Y lo mejor de todo es que ustedes van a tener la oportunidad de crear su propio modelo de aprendizaje automático!
+
+Recuerden: la inteligencia artificial es como una herramienta, y con el conocimiento, ¡tendrán todo el poder para usarla de la mejor manera!"""</div>
+        </div>
+        <!-- Paso 3 -->
+        <div class="section">
+            <div class="step-title">Paso 3 (1 minuto): Proyectar la diapositiva 8 y guiar la reflexión sobre la IA</div>
+            <div class="dialogue">"¿Cómo creen que la IA podría mejorar nuestras vidas en el futuro? ¿Qué áreas de la sociedad creen que podrían beneficiarse más con esta tecnología?"</div>
+        </div>
+    </div>
+</div>
+<!-- Actividad 3 (6 pasos) -->
+<div id="activity-3" class="activity">
+    <div class="banner" onclick="toggleContent('brain-gym')">
+        <div class="title">
+            <span>📝 Actividad 3: Brain Gym (6 pasos)</span>
+            <span>⏰ Tiempo: 5 minutos</span>
+        </div>
+        <div class="subtitle">Ejercitando nuestras mentes con la IA</div>
+    </div>
+    <div id="brain-gym" class="content">
+        <!-- Paso 1 -->
+        <div class="section">
+            <div class="step-title">Paso 1 (1 minuto): Proyectar la diapositiva 9 "Brain Gym" y explicar la importancia de la IA</div>
+            <div class="dialogue">"¡Genios! Hoy vamos a ejercitar nuestras mentes aprendiendo sobre cómo la Inteligencia Artificial nos ayuda a limpiar los océanos. Además, hay un Easter Egg escondido en la explicación, ¡así que presten atención para ganar Mon-e!"</div>
+        </div>
+        <!-- Paso 2 -->
+        <div class="section">
+            <div class="step-title">Paso 2 (1 minuto): Proyectar la diapositiva 10 y explicar el proceso de entrenamiento de la IA</div>
+            <div class="dialogue">"La IA se entrena usando ImageNet, una base de datos con 14 millones de imágenes."</div>
+        </div>
+        <!-- Paso 3 -->
+        <div class="section">
+            <div class="step-title">Paso 3 (1 minuto): Proyectar la diapositiva 11 y guiar la actividad de etiquetar imágenes</div>
+            <div class="dialogue">"Cada imagen que etiqueten le ayudará a la IA a mejorar sus predicciones. ¡Ustedes la entrenarán!"</div>
+        </div>
+        <!-- Paso 4 -->
+        <div class="section">
+            <div class="step-title">Paso 4 (1 minuto): Proyectar la diapositiva 12 y reflexionar sobre el sesgo en los datos</div>
+            <div class="dialogue">"Si los datos son incorrectos, la IA aprenderá mal. Esto puede tener grandes implicaciones."</div>
+        </div>
+        <!-- Paso 5 -->
+        <div class="section">
+            <div class="step-title">Paso 5 (1 minuto): Proyectar la diapositiva 13 y analizar los resultados de la IA</div>
+            <div class="dialogue">"Cuando la IA ve una imagen nueva, compara con las imágenes que ha visto antes y hace predicciones."</div>
+        </div>
+    </div>
+</div>
+<!-- Actividad 4 (2 pasos) -->
+<div id="activity-4" class="activity">
+    <div class="banner" onclick="toggleContent('state-change')">
+        <div class="title">
+            <span>🔄 Actividad 4: State Change (2 pasos)</span>
+            <span>⏰ Tiempo: 2 minutos</span>
+        </div>
+        <div class="subtitle">Actividad física relacionada con la IA y los océanos</div>
+    </div>
+    <div id="state-change" class="content">
+        <!-- Paso 1 -->
+        <div class="section">
+            <div class="step-title">Paso 1 (1 minuto): Proyectar la diapositiva 14 "State Change"</div>
+            <div class="dialogue">"Genios, vamos a movernos un poco para cambiar de estado. Imaginen que son sensores en el océano. Cuando reciban datos importantes (cuando diga 'agua limpia'), ¡todos saltan! Si digo 'contaminación', se agachan."</div>
+        </div>
+        <!-- Paso 2 -->
+        <div class="section">
+            <div class="step-title">Paso 2 (1 minuto): Proyectar la diapositiva 15 y guiar los movimientos de los estudiantes</div>
+            <div class="dialogue">"Iniciemos: agua limpia, contaminación, contaminación, agua limpia, agua limpia, contaminación, contaminación, contaminación..."</div>
+        </div>
+    </div>
+</div>
+<!-- Actividad 5 -->
+<div id="activity-5" class="activity">
+    <div class="banner" onclick="toggleContent('team-gnius')">
+        <div class="title">
+            <span>👥 Actividad 5: Team Gnius</span>
+            <span>⏰ Tiempo: 3 minutos</span>
+        </div>
+        <div class="subtitle">Formación de equipos y recogida de materiales</div>
+    </div>
+    <div id="team-gnius" class="content">
+        <!-- Paso 1 -->
+        <div class="section">
+            <div class="step-title">Paso 1 (1 minuto): Proyectar la diapositiva 16 "Formación de Equipos"</div>
+            <div class="dialogue">"Genios, se van a formar en equipos de 2 personas. En cada equipo, uno será el 'Programador Principal' y el otro será el 'Asistente de Programación'. Tienen 30 segundos para formar sus equipos."</div>
+        </div>
+        <!-- Paso 2 -->
+        <div class="section">
+            <div class="step-title">Paso 2 (30 segundos): Proyectar la diapositiva 17 "Temporizador: 30 segundos"</div>
+            <div class="dialogue">"¡Comiencen a formar sus equipos ahora! Solo tienen 30 segundos."</div>
+        </div>
+        <!-- Paso 3 -->
+        <div class="section">
+            <div class="step-title">Paso 3 (1 minuto): Proyectar la diapositiva 18 "Recogida de Materiales"</div>
+            <div class="dialogue">"Solo uno de ustedes irá a recoger los materiales necesarios. Asegúrense de que sea rápido y eficiente."</div>
+        </div>
+        <!-- Paso 4 -->
+        <div class="section">
+            <div class="step-title">Paso 4 (30 segundos): Proyectar la diapositiva 19 "Temporizador: 30 segundos para recoger material"</div>
+            <div class="dialogue">"Tienen 30 segundos para que un integrante de cada equipo recoja los materiales. ¡Vamos, que el tiempo corre!"</div>
+        </div>
+    </div>
+</div>
+<!-- Actividad 6 -->
+<div id="activity-6" class="activity">
+    <div class="banner" onclick="toggleContent('challenge')">
+        <div class="title">
+            <span>🚀 Actividad 6: Challenge</span>
+            <span>⏰ Tiempo: 17.5 minutos</span>
+        </div>
+        <div class="subtitle">Etiquetar imágenes para entrenar una IA</div>
+    </div>
+    <div id="challenge" class="content">
+        <!-- Paso 1 -->
+        <div class="section">
+            <div class="step-title">Paso 1 (1 minuto): Proyectar la diapositiva 20 "Explicación del Challenge"</div>
+            <div class="dialogue">"Genios, en esta actividad van a entrenar una Inteligencia Artificial para que pueda clasificar imágenes en 'pez' o 'no pez'. ¡Cada etiqueta es importante para que la IA aprenda correctamente!"</div>
+        </div>
+        <!-- Paso 2 -->
+        <div class="section">
+            <div class="step-title">Paso 2 (10 minutos): Proyectar la diapositiva 21 "Inicio del etiquetado"</div>
+            <div class="dialogue">"Ahora, etiqueten las imágenes con precisión. Cada imagen que clasifiquen correctamente ayudará a la IA a hacer predicciones más precisas, el 'programador principal' clasificará los peces y el 'asistente de programación' anotará en las Magic Tablets cuántas imágenes clasificó. Tienen 10 minutos."</div>
+        </div>
+        <!-- Paso 3 -->
+        <div class="section">
+            <div class="step-title">Paso 3 (1 minuto): Proyectar la diapositiva 22 "Análisis de la IA"</div>
+            <div class="dialogue">"La IA usará los datos que ustedes le han dado para intentar clasificar más de 500 nuevas imágenes. ¡Vamos a ver qué tan bien lo ha hecho!"</div>
+        </div>
+        <!-- Paso 4 -->
+        <div class="section">
+            <div class="step-title">Paso 4 (10 minutos): Proyectar la diapositiva 23 "Cambio de roles y etiquetado"</div>
+            <div class="dialogue">"Es hora de cambiar roles. Si estabas etiquetando, ahora revisarás. Y si revisabas, ¡ahora serás el encargado de etiquetar las imágenes! Ahora etiquetarán seres que deben estar en el agua."</div>
+        </div>
+        <!-- Paso 5 -->
+        <div class="section">
+            <div class="step-title">Paso 5 (0.5 minutos): Proyectar la diapositiva 24 "Análisis de la IA"</div>
+            <div class="dialogue">"La IA usará los datos que ustedes le han dado para intentar clasificar más de 500 nuevas imágenes. ¡Vamos a ver qué tan bien lo ha hecho!"</div>
+        </div>
+        <!-- Paso 6 -->
+        <div class="section">
+            <div class="step-title">Paso 6 (5 minutos): Proyectar la diapositiva 25 "Reflexión sobre la precisión de la IA"</div>
+            <div class="dialogue">"Genios, miren el resultado de su entrenamiento. ¿Qué tan bien creen que la IA ha hecho su trabajo? ¿Dónde creen que podría mejorar?"</div>
+        </div>
+    </div>
+</div>
+<!-- Actividad 7 -->
+<div id="activity-7" class="activity">
+    <div class="banner" onclick="toggleContent('easter-egg')">
+        <div class="title">
+            <span>🥚 Actividad 7: Easter Egg</span>
+            <span>⏰ Tiempo: 2.5 minutos</span>
+        </div>
+        <div class="subtitle">Descubre el Easter Egg relacionado con la IA</div>
+    </div>
+    <div id="easter-egg" class="content">
+        <!-- Paso 1 -->
+        <div class="section">
+            <div class="step-title">Paso 1 (0.5 minutos): Proyectar la diapositiva 26 "Introducción al Easter Egg"</div>
+            <div class="dialogue">"¡Genios! Ahora es momento de descubrir el Easter Egg que mencioné al principio de la clase. ¡Vamos con la pregunta!"</div>
+        </div>
+        <!-- Paso 2 -->
+        <div class="section">
+            <div class="step-title">Paso 2 (0.5 minutos): Proyectar la diapositiva 27 "Pregunta del Easter Egg"</div>
+            <div class="dialogue">"La pregunta del Easter Egg es: ¿Con cuántas imágenes se entrena ImageNet?"</div>
+        </div>
+        <!-- Paso 3 -->
+        <div class="section">
+            <div class="step-title">Paso 3 (1 minuto): Los estudiantes se acercan al profesor para dar su respuesta</div>
+            <div class="dialogue">"Voy a elegir a 3 de ustedes. Vengan y díganme la respuesta en voz baja. ¡Buena suerte!"</div>
+        </div>
+        <!-- Paso 4 -->
+        <div class="section">
+            <div class="step-title">Paso 4 (0.5 minutos): Proyectar la diapositiva 28 "Respuesta del Easter Egg"</div>
+            <div class="dialogue">"¡La respuesta correcta es: Con una base de datos con 14 millones de imágenes! Felicidades a los que respondieron bien. ¡Ganaron Mon-e extra!"</div>
+        </div>
+    </div>
+</div>
+<!-- Actividad 8 -->
+<div id="activity-8" class="activity">
+    <div class="banner" onclick="toggleContent('honor-dojo')">
+        <div class="title">
+            <span>🏅 Actividad 8: Honor de Dojo</span>
+            <span>⏰ Tiempo: 5 minutos</span>
+        </div>
+        <div class="subtitle">Reflexión y recogida del espacio</div>
+    </div>
+    <div id="honor-dojo" class="content">
+        <!-- Paso 1 -->
+        <div class="section">
+            <div class="step-title">Paso 1 (0.5 minutos): Proyectar la diapositiva 29 "Revisión de Objetivos"</div>
+            <div class="dialogue">"Genios, antes de despedirnos, vamos a revisar lo que logramos hoy. Aprendimos a entrenar una IA y a clasificar imágenes para ayudar a limpiar los océanos. ¡Excelente trabajo!"</div>
+        </div>
+        <!-- Paso 2 -->
+        <div class="section">
+            <div class="step-title">Paso 2 (0.5 minutos): Reconocer el esfuerzo colectivo del grupo</div>
+            <div class="dialogue">"Hoy todo el grupo trabajó muy bien en el entrenamiento de la IA. ¡Hicieron un gran trabajo en equipo para ayudar a la IA a clasificar imágenes!"</div>
+        </div>
+        <!-- Paso 3 -->
+        <div class="section">
+            <div class="step-title">Paso 3 (0.5 minutos): Proyectar la diapositiva 30 "Reflexión sobre el trabajo realizado"</div>
+            <div class="dialogue">"Hoy aprendimos que los datos que le damos a la IA son clave para su aprendizaje. ¿Qué fue lo que más les sorprendió al ver cómo la IA funcionó?"</div>
+        </div>
+        <!-- Paso 4 -->
+        <div class="section">
+            <div class="step-title">Paso 4 (3 minutos): Proyectar la diapositiva 31 "Recogida del espacio"</div>
+            <div class="dialogue">"Finalmente, como siempre, vamos a honrar nuestro espacio recogiendo todo lo que usamos hoy. ¡Vamos a dejar el lugar tan limpio como nuestros océanos deben estar!"</div>
+        </div>
+    </div>
+</div>
+</div> <!-- Cierre del container -->
+
+    <!-- Scripts adicionales si es necesario -->
+    <script>
+        // Agregar scripts adicionales aquí si es necesario
+    </script>
+
+    </body>
+    </html>
